@@ -4,6 +4,9 @@ const { koaBody } = require("koa-body");
 const userRouter = require("../routes/user.router");
 
 const app = new Koa();
+// app.use((ctx) => {
+//   ctx.set("Content-Type", "application/vnd.myapi.v1+json");
+// });
 
 app.use(userRouter.routes());
 app.use(koaBody());
