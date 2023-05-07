@@ -3,9 +3,8 @@ const parse = require("co-body");
 
 class userController {
   async register(ctx, next) {
-    console.log(typeof ctx);
-    const data = await parse(ctx);
-    const { user_name, password } = data;
+    console.log(ctx.request.body);
+    const { user_name, password } = ctx.request.body;
 
     const res = await createUser(user_name, password);
     console.log(res);
@@ -20,7 +19,8 @@ class userController {
     };
   }
   async login(ctx, next) {
-    console.log(ctx.request);
+    const data = await parse(ctx);
+
     ctx.body = "login";
   }
   async test(ctx, next) {
